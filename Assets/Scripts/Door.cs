@@ -6,6 +6,9 @@ public class Door : MonoBehaviour
     private Vector3 m_OpenRotation = new Vector3(0, 90, 0);
 
     [SerializeField]
+    private Vector3 m_OpenOffset;
+
+    [SerializeField]
     private float m_Speed = 1;
 
     private bool m_IsOpen;
@@ -14,10 +17,16 @@ public class Door : MonoBehaviour
     private Vector3 m_ClosedRotation;
     private Vector3 m_TargetRotation;
 
+    private Vector3 m_ClosedPosition;
+    private Vector3 m_TargetPosition;
+
     private void Awake()
     {
         //Save the rotation that the door has when its closed.
         m_ClosedRotation = transform.localEulerAngles;
+
+        //Save the position that the door has when its closed.
+        m_ClosedPosition = transform.localPosition;
     }
 
     private void Update()
@@ -26,8 +35,14 @@ public class Door : MonoBehaviour
         if (m_InTransition == false)
             return;
 
+        //Time used for the lerp.
+        var t = Time.deltaTime * m_Speed;
+
         //Lerp to the rotation needed.
-        transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, m_TargetRotation, Time.deltaTime);
+        transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, m_TargetRotation, t);
+
+        //Lerp the position needed.
+        transform.localPosition = Vector3.Lerp(transform.localPosition, m_TargetPosition, t);
 
         //Check how close to finishing the lerp we are.
         var distance = Vector3.Distance(transform.localEulerAngles, m_TargetRotation);
@@ -42,8 +57,11 @@ public class Door : MonoBehaviour
         //Start the transition.
         m_InTransition = true;
 
-        //Assign the correct rotation.
-        m_TargetRotation = (m_IsOpen) ? m_OpenRotation : m_ClosedRotation;
+        //Use the correct rotation as a target.
+        m_TargetRotation = m_IsOpen ? m_OpenRotation : m_ClosedRotation;
+
+        //Use the correct position as a target.
+        m_TargetPosition = m_IsOpen ? (m_ClosedPosition + m_OpenOffset) : m_ClosedPosition;
     }
 
     public void Toogle()
