@@ -11,6 +11,9 @@ public class Door : MonoBehaviour
     [SerializeField]
     private float m_Speed = 1;
 
+    [SerializeField]
+    private bool m_AutoOpen = true;
+
     private bool m_IsOpen;
     private bool m_InTransition;
 
@@ -44,11 +47,14 @@ public class Door : MonoBehaviour
         //Lerp the position needed.
         transform.localPosition = Vector3.Lerp(transform.localPosition, m_TargetPosition, t);
 
-        //Check how close to finishing the lerp we are.
-        var distance = Vector3.Distance(transform.localEulerAngles, m_TargetRotation);
+        //Check how close to finishing the rotation lerp we are.
+        var rotDistance = Vector3.Distance(transform.localEulerAngles, m_TargetRotation);
+
+        //Check how close to finishing the position lerp we are.
+        var posDistance = Vector3.Distance(transform.localPosition, m_TargetPosition);
 
         //If we're done, stop transitioning.
-        if (distance < 0.01f)
+        if (rotDistance < 0.01f && posDistance < 0.01f)
             m_InTransition = false;
     }
 
@@ -86,5 +92,33 @@ public class Door : MonoBehaviour
         m_IsOpen = false;
 
         StartTransition();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //If the door doesn't need to auto open, go back.
+        if (m_AutoOpen == false)
+            return;
+
+        //Check if the object that just entered the trigger is a door opener.
+        var opener = other.GetComponent<DoorOpener>();
+
+        //If it is, open the door.
+        if (opener)
+            Open();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //If the door doesn't need to auto open, go back.
+        if (m_AutoOpen == false)
+            return;
+
+        //Check if the object that just exited the trigger is a door opener.
+        var opener = other.GetComponent<DoorOpener>();
+
+        //If it is, close the door.
+        if (opener)
+            Close();
     }
 }
