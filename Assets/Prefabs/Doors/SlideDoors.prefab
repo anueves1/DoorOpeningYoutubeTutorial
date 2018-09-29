@@ -88,7 +88,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4405774116211522}
-  - component: {fileID: 114931898412273436}
   m_Layer: 0
   m_Name: DoorPivot
   m_TagString: Untagged
@@ -104,6 +103,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4922953858333914}
+  - component: {fileID: 114552570974922140}
+  - component: {fileID: 65323601784635724}
   m_Layer: 0
   m_Name: SlideDoors
   m_TagString: Untagged
@@ -232,8 +233,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1857300472530952}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.065, y: 0.326, z: -0.25439906}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.493445, y: 0.31635347, z: -1.1370404}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4994425822163962}
@@ -503,6 +504,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65323601784635724
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857300472530952}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.85, y: 1.89, z: 1.38}
+  m_Center: {x: -0.55, y: -0.51, z: -0.6}
 --- !u!65 &65498774331454548
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -515,17 +528,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114931898412273436
+--- !u!114 &114552570974922140
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746384468419722}
+  m_GameObject: {fileID: 1857300472530952}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b9637587843d1469bfac4369303fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Speed: 3
+  m_AutoOpen: 1
+  m_Pivot: {fileID: 4405774116211522}
   m_OpenRotation: {x: 0, y: 0, z: 90}
   m_OpenOffset: {x: 0, y: 1.8, z: 0}
-  m_Speed: 3

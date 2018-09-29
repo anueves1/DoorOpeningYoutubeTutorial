@@ -149,12 +149,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &470702213 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114956909264368144, guid: 5b779b43f4f2d1149b80da99c1afe88f,
-    type: 2}
-  m_PrefabInternal: {fileID: 695492892}
-  m_Script: {fileID: 11500000, guid: 36b9637587843d1469bfac4369303fa5, type: 3}
 --- !u!1 &600332672
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +347,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4050125198658672, guid: 6f987d76628e5b44087aa169aa4d0acd,
     type: 2}
   m_PrefabInternal: {fileID: 1089015110}
+--- !u!1 &1054932311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1475757133051546, guid: 6f987d76628e5b44087aa169aa4d0acd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1089015110}
+--- !u!54 &1054932317
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1054932311}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1089015110
 Prefab:
   m_ObjectHideFlags: 0
@@ -396,12 +410,12 @@ Prefab:
         type: 2}
       propertyPath: m_Doors.Array.data[0]
       value: 
-      objectReference: {fileID: 470702213}
+      objectReference: {fileID: 0}
     - target: {fileID: 114857901326843036, guid: 6f987d76628e5b44087aa169aa4d0acd,
         type: 2}
       propertyPath: m_Doors.Array.data[1]
       value: 
-      objectReference: {fileID: 1691465657}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f987d76628e5b44087aa169aa4d0acd, type: 2}
   m_IsPrefabAsset: 0
@@ -482,9 +496,3 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d63276a57b21d2409beb16e9e4da396, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1691465657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114931898412273436, guid: 7d63276a57b21d2409beb16e9e4da396,
-    type: 2}
-  m_PrefabInternal: {fileID: 1691465656}
-  m_Script: {fileID: 11500000, guid: 36b9637587843d1469bfac4369303fa5, type: 3}

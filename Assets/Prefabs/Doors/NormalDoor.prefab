@@ -34,8 +34,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4286143641400996}
-  - component: {fileID: 114956909264368144}
-  - component: {fileID: 65858355996142244}
   m_Layer: 0
   m_Name: DoorPivot
   m_TagString: Untagged
@@ -104,6 +102,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4135516620910066}
+  - component: {fileID: 114859874840279458}
+  - component: {fileID: 65642396666631610}
   m_Layer: 0
   m_Name: NormalDoor
   m_TagString: Untagged
@@ -504,18 +504,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65858355996142244
+--- !u!65 &65642396666631610
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200616981921984}
+  m_GameObject: {fileID: 1706515922867722}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.42, y: 1.89, z: 1.38}
-  m_Center: {x: -0.5, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.51, z: -0.6}
 --- !u!65 &65875657487904294
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -528,17 +528,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114956909264368144
+--- !u!114 &114859874840279458
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200616981921984}
+  m_GameObject: {fileID: 1706515922867722}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b9637587843d1469bfac4369303fa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Speed: 3
+  m_AutoOpen: 1
+  m_Pivot: {fileID: 4286143641400996}
   m_OpenRotation: {x: 0, y: 80, z: 0}
   m_OpenOffset: {x: 0, y: 0, z: 0}
-  m_Speed: 3

@@ -3,16 +3,19 @@
 public class Door : MonoBehaviour
 {
     [SerializeField]
-    private Vector3 m_OpenRotation = new Vector3(0, 90, 0);
-
-    [SerializeField]
-    private Vector3 m_OpenOffset;
-
-    [SerializeField]
     private float m_Speed = 1;
 
     [SerializeField]
     private bool m_AutoOpen = true;
+
+    [SerializeField]
+    private Transform m_Pivot;
+
+    [SerializeField]
+    private Vector3 m_OpenRotation = new Vector3(0, 90, 0);
+
+    [SerializeField]
+    private Vector3 m_OpenOffset;
 
     private bool m_IsOpen;
     private bool m_InTransition;
@@ -26,10 +29,14 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         //Save the rotation that the door has when its closed.
-        m_ClosedRotation = transform.localEulerAngles;
+        m_ClosedRotation = m_Pivot.localEulerAngles;
 
         //Save the position that the door has when its closed.
-        m_ClosedPosition = transform.localPosition;
+        m_ClosedPosition = m_Pivot.localPosition;
+
+        //If we have no pivot, use this object as one.
+        if (m_Pivot == null)
+            m_Pivot = transform;
     }
 
     private void Update()
@@ -42,16 +49,16 @@ public class Door : MonoBehaviour
         var t = Time.deltaTime * m_Speed;
 
         //Lerp to the rotation needed.
-        transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, m_TargetRotation, t);
+        m_Pivot.localEulerAngles = Vector3.Slerp(m_Pivot.localEulerAngles, m_TargetRotation, t);
 
         //Lerp the position needed.
-        transform.localPosition = Vector3.Lerp(transform.localPosition, m_TargetPosition, t);
+        m_Pivot.localPosition = Vector3.Lerp(m_Pivot.localPosition, m_TargetPosition, t);
 
         //Check how close to finishing the rotation lerp we are.
-        var rotDistance = Vector3.Distance(transform.localEulerAngles, m_TargetRotation);
+        var rotDistance = Vector3.Distance(m_Pivot.localEulerAngles, m_TargetRotation);
 
         //Check how close to finishing the position lerp we are.
-        var posDistance = Vector3.Distance(transform.localPosition, m_TargetPosition);
+        var posDistance = Vector3.Distance(m_Pivot.localPosition, m_TargetPosition);
 
         //If we're done, stop transitioning.
         if (rotDistance < 0.01f && posDistance < 0.01f)
